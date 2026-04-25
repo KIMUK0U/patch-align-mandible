@@ -187,17 +187,110 @@ python data_pipeline/run_phase0.py
 
 ## References
 
-**Method**
+**Backbone**
 
-- **PatchAlign3D** — patch-level 3D point cloud encoder used as the backbone in this work.
+```bibtex
+@misc{hadgi2026patchalign3dlocalfeaturealignment,
+  title         = {PatchAlign3D: Local Feature Alignment for Dense 3D Shape understanding},
+  author        = {Souhail Hadgi and Bingchen Gong and Ramana Sundararaman and Emery Pierson
+                   and Lei Li and Peter Wonka and Maks Ovsjanikov},
+  year          = {2026},
+  eprint        = {2601.02457},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url           = {https://arxiv.org/abs/2601.02457},
+}
+```
+
+**CLIP backbone (ViT-bigG-14) pre-training data**
+
+```bibtex
+@inproceedings{schuhmann2022laionb,
+  title     = {{LAION}-5B: An open large-scale dataset for training next generation image-text models},
+  author    = {Christoph Schuhmann and Romain Beaumont and Richard Vencu and Cade W Gordon
+               and Ross Wightman and Mehdi Cherti and Theo Coombes and Aarush Katta
+               and Clayton Mullis and Mitchell Wortsman and Patrick Schramowski
+               and Srivatsa R Kundurthy and Katherine Crowson and Ludwig Schmidt
+               and Robert Kaczmarczyk and Jenia Jitsev},
+  booktitle = {Thirty-sixth Conference on Neural Information Processing Systems Datasets and Benchmarks Track},
+  year      = {2022},
+  url       = {https://openreview.net/forum?id=M3Y74vmsMcY},
+}
+```
+
+**OpenCLIP**
+
+```bibtex
+@software{ilharco_gabriel_2021_5143773,
+  author    = {Ilharco, Gabriel and Wortsman, Mitchell and Wightman, Ross and Gordon, Cade
+               and Carlini, Nicholas and Taori, Rohan and Dave, Achal and Shankar, Vaishaal
+               and Namkoong, Hongseok and Miller, John and Hajishirzi, Hannaneh
+               and Farhadi, Ali and Schmidt, Ludwig},
+  title     = {OpenCLIP},
+  month     = jul,
+  year      = 2021,
+  publisher = {Zenodo},
+  version   = {0.1},
+  doi       = {10.5281/zenodo.5143773},
+  url       = {https://doi.org/10.5281/zenodo.5143773},
+}
+```
+
+**BiomedCLIP (alternative text encoder)**
+
+```bibtex
+@misc{zhang2023biomedclip,
+  title         = {BiomedCLIP: a multimodal biomedical foundation model pretrained from
+                   fifteen million scientific image-text pairs},
+  author        = {Sheng Zhang and Yanbo Xu and Naoto Usuyama and Jaspreet Bagga
+                   and Robert Tinn and Sam Preston and Rajesh Rao and Mu Wei
+                   and Naveen Vajjala and Subhashini Venugopalan and Chitta Baral
+                   and Xin Liu and Matthew P. Lungren and Tristan Naumann
+                   and Chunyuan Li and Hoifung Poon},
+  year          = {2023},
+  eprint        = {2303.00915},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url           = {https://arxiv.org/abs/2303.00915},
+}
+```
+
+**ULIP (3D–language pre-training)**
+
+```bibtex
+@inproceedings{xue2023ulip,
+  title     = {{ULIP}: Learning a Unified Representation of Language, Images, and Point Clouds
+               for 3D Understanding},
+  author    = {Le Xue and Mingfei Gao and Chen Xing and Roberto Martín-Martín and Jiajun Wu
+               and Caiming Xiong and Ran Xu and Juan Carlos Niebles and Silvio Savarese},
+  booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages     = {1179--1189},
+  year      = {2023},
+}
+```
+
+**PointLLM (3D–language pre-training)**
+
+```bibtex
+@article{xu2023pointllm,
+  title   = {PointLLM: Empowering Large Language Models to Understand Point Clouds},
+  author  = {Runsen Xu and Xingrui Wang and Tai Wang and Yilun Chen
+             and Jiangmiao Pang and Dahua Lin},
+  journal = {arXiv preprint arXiv:2308.16911},
+  year    = {2023},
+  url     = {https://arxiv.org/abs/2308.16911},
+}
+```
 
 **Dataset**
 
-- Wallner, Jürgen; Egger, Jan (2018). **Mandibular CT Dataset Collection**. *figshare*. Dataset.  
-  <https://doi.org/10.6084/m9.figshare.6167726.v6>
-
-**Related work**
-
-- ULIP / PointLLM — 3D–language pre-training frameworks that inspired the contrastive alignment approach.
-- BiomedCLIP — Microsoft biomedical vision-language model used as an alternative text encoder.  
-  `hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224`
+```bibtex
+@data{wallner2018mandible,
+  title     = {Mandibular CT Dataset Collection},
+  author    = {Wallner, Jürgen and Egger, Jan},
+  publisher = {figshare},
+  year      = {2018},
+  doi       = {10.6084/m9.figshare.6167726.v6},
+  url       = {https://doi.org/10.6084/m9.figshare.6167726.v6},
+}
+```
