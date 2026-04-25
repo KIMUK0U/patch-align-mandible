@@ -1,0 +1,53 @@
+# Stage 3a: 領域パッチ InfoNCE 学習 設定 (ViT-bigG-14)
+# テキストエンコーダは凍結のまま。点群エンコーダのみを学習する。
+# clip_dim: 1280 (ViT-bigG-14 出力次元)
+
+seed: 42
+output_dir: "outputs/stage3a_bigG14"
+
+# ---------- データ ----------
+data:
+  ply_dir:  "../../../Dataset/6167726/STLs/STLs/normPLYs"
+  json_path: "../../data/DentalPatchData/dental_vocab/candidates.json"
+  npoints:   2048
+  val_ratio: 0.2
+  point_augment: false
+
+# ---------- CLIP ----------
+clip:
+  model:          "ViT-bigG-14"
+  pretrained:     "laion2b_s39b_b160k"
+  cache_capacity: 5000
+
+# ---------- モデル ----------
+model:
+  trans_dim:      384
+  depth:          12
+  drop_path_rate: 0.1
+  cls_dim:        50
+  num_heads:      6
+  group_size:     32
+  num_group:      128
+  encoder_dims:   256
+  color:          false
+  num_classes:    16
+  clip_dim:       1280    # ViT-bigG-14 テキスト出力次元
+  clip_tau:       0.07
+
+  stage2_ckpt: "../../checkpoints/patchalign3d/patchalign3d.pt"
+
+# ---------- 損失 ----------
+loss:
+  lambda_infonce: 1.0
+  lambda_kd:      0.5
+
+# ---------- 学習 ----------
+training:
+  epochs:        30
+  batch_size:    4
+  lr:            1.0e-4
+  lr_min:        1.0e-6
+  weight_decay:  0.05
+  num_workers:   0
+  eval_every:    5
+  save_every:    10

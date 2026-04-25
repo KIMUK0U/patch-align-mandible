@@ -1,0 +1,77 @@
+{
+  "ply": "Pat 1a_norm",
+  "n_fps": 32,
+  "n_neighbors": 64,
+  "patches": {
+    "0": {
+      "patch_id": 0,
+      "names": [
+        "Mental region",
+        "Mental tubercle",
+        "Mental prominence"
+      ],
+      "center_xyz": [
+        -0.03792726621031761,
+        -0.43027055263519287,
+        -0.6245216727256775
+      ],
+      "status": "labeled"
+    },
+    "21": {
+      "patch_id": 21,
+      "names": [
+        "Mental region",
+        "Mental tubercle",
+        "Mental prominence"
+      ],
+      "center_xyz": [
+        0.23467539250850677,
+        -0.3930533826351166,
+        -0.6151430010795593
+      ],
+      "status": "labeled"
+    },
+    "16": {
+      "patch_id": 16,
+      "names": [
+        "Mental region",
+        "Mental tubercle",
+        "Mental prominence"
+      ],
+      "center_xyz": [
+        0.11499316245317459,
+        -0.5114003419876099,
+        -0.36750102043151855
+      ],
+      "status": "labeled"
+    },
+    "15": {
+      "patch_id": 15,
+      "names": [
+        "Mental region",
+        "Mental tubercle",
+        "Mental prominence"
+      ],
+      "center_xyz": [
+        -0.20935200154781342,
+        -0.47421929240226746,
+        -0.3662639856338501
+      ],
+      "status": "labeled"
+    },
+    "17": {
+      "patch_id": 17,
+      "names": [
+        "Mental region",
+        "Mental tubercle",
+        "Mental prominence"
+      ],
+      "center_xyz": [
+        -0.273266464471817,
+        -0.273332417011261,
+        -0.5684787034988403
+      ],
+      "status": "labeled"
+    }
+  }
+}

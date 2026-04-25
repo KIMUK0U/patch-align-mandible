@@ -1,0 +1,71 @@
+# --- Hidden phases (not for public release) ---
+Phase1_PatchAligned3D/
+Phase3_5_PointLLMEncoder/
+
+# --- Training outputs (checkpoints, logs) ---
+outputs/
+**/outputs/
+
+# --- Inference result dumps (large GIF/PNG sets) ---
+inference_results*/
+**/inference_results*/
+training/*.gif
+training_text_tune/*.gif
+training_biomedclip/*.gif
+
+# --- API key file (use generate_text_candidates.example.py instead) ---
+data_pipeline/tools/generate_text_candidates.py
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# --- macOS ---
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# --- Claude ---
+.claude/
+
+# --- Pip install artifacts (e.g. "=2.24.0" leftover dirs) ---
+=*/
+
+# --- Large binary weights & CoreML models ---
+*.pt
+*.pth
+*.npz
+*.bin
+*.mlpackage/
+apple_deploy/results.json
+
+# --- 3D model assets (large binary) ---
+*.usdz
+*.reality
+*.rcproject
+
+# --- Xcode / Swift build artifacts ---
+xcuserdata/
+**/*.xcworkspace/xcuserdata/
+DerivedData/
+*.xccheckout
+*.moved-aside
+*.hmap
+
+# --- Swift Package Manager build cache ---
+.build/
+.swiftpm/xcode/
+
+# --- Jupyter checkpoints ---
+.ipynb_checkpoints/
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/

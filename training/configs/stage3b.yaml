@@ -1,0 +1,62 @@
+# Stage 3b: 局所パッチ BCE + KD + EWC 学習 設定
+# 設計書 Phase 3 セクション 4 に準拠
+
+seed: 42
+output_dir: "outputs/stage3b"
+
+# ---------- データ ----------
+data:
+  # PLY ファイルのディレクトリ (2048 点、normPLYs)
+  # 実行ディレクトリ: Phase3_Training/ → ../../../ = 2026研究/
+  ply_dir: "../../../Dataset/6167726/STLs/STLs/normPLYs"
+  json_path: "../../data/DentalPatchData/dental_vocab/candidates.json"
+  npoints: 2048
+  val_ratio: 0.2
+  text_augment: true     # 戦略 A: 各エポックで 5 テキストからランダム選択
+  point_augment: true    # SO(3)回転・スケーリング・平行移動・ジッタリング（訓練時のみ）
+
+# ---------- CLIP ----------
+clip:
+  model: "ViT-bigG-14"
+  pretrained: "laion2b_s39b_b160k"
+  cache_capacity: 10000  # 長文テキストが多いのでキャッシュを大きめに
+
+# ---------- モデル ----------
+model:
+  trans_dim: 384
+  depth: 12
+  drop_path_rate: 0.1
+  cls_dim: 50
+  num_heads: 6
+  group_size: 32
+  num_group: 128
+  encoder_dims: 256
+  color: false
+  num_classes: 16
+  clip_dim: 1280
+  clip_tau: 0.07
+
+  # Stage 3a 完了チェックポイント (--stage3a_ckpt で上書き可)
+  stage3a_ckpt: "outputs/stage3a/stage3a_last.pt"
+
+  # Stage 2 事前学習済み重み (Teacher 初期化用バックアップ)
+  stage2_ckpt: "../../checkpoints/patchalign3d/stage2_best.pt"
+
+# ---------- 損失 ----------
+loss:
+  lambda_bce:     1.0
+  lambda_kd:      0.3     # パッチ特徴 MSE
+  lambda_ewc:     1000.0  # Fisher スケールに依存、要チューニング
+  lambda_kd_text: 0.0     # KL テキスト蒸留 (0.2 で有効化、まず 0 で試す)
+  ewc_fisher_batches: 50  # Fisher 推定バッチ数
+
+# ---------- 学習 ----------
+training:
+  epochs: 50
+  batch_size: 4
+  lr: 3.0e-5
+  weight_decay: 0.05
+  warmup_epochs: 5
+  num_workers: 0
+  eval_every: 5
+  save_every: 10

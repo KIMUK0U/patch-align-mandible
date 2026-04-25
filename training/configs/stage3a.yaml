@@ -1,0 +1,57 @@
+# Stage 3a: 領域パッチ InfoNCE 学習 設定
+# 設計書 Phase 3 セクション 3 に準拠
+
+seed: 42
+output_dir: "outputs/stage3a"
+
+# ---------- データ ----------
+data:
+  # PLY ファイルのディレクトリ (2048 点、normPLYs)
+  # 実行ディレクトリ: Phase3_Training/ → ../../../ = 2026研究/
+  ply_dir: "../../../Dataset/6167726/STLs/STLs/normPLYs"
+  # アノテーション JSON
+  json_path: "../../data/DentalPatchData/dental_vocab/candidates.json"
+  npoints: 2048
+  val_ratio: 0.2        # 20% (= 4 患者) をバリデーション用に確保
+  point_augment: true   # SO(3)回転・スケーリング・平行移動・ジッタリング（訓練時のみ）
+
+# ---------- CLIP ----------
+clip:
+  model: "ViT-bigG-14"
+  pretrained: "laion2b_s39b_b160k"
+  cache_capacity: 5000
+
+# ---------- モデル ----------
+model:
+  trans_dim: 384
+  depth: 12
+  drop_path_rate: 0.1
+  cls_dim: 50
+  num_heads: 6
+  group_size: 32
+  num_group: 128
+  encoder_dims: 256
+  color: false
+  num_classes: 16
+  clip_dim: 1280         # ViT-bigG-14 テキスト次元
+  clip_tau: 0.07
+
+  # Stage 2 事前学習済み重み (空文字でスキップ)
+  # HuggingFace からダウンロードした Stage 2 チェックポイントのパス
+  stage2_ckpt: "../../checkpoints/patchalign3d/stage2_best.pt"
+
+# ---------- 損失 ----------
+loss:
+  lambda_infonce: 1.0
+  lambda_kd: 0.5
+
+# ---------- 学習 ----------
+training:
+  epochs: 30
+  batch_size: 4          # VRAM 8GB 想定。増やす場合は 8 まで
+  lr: 1.0e-4
+  lr_min: 1.0e-6
+  weight_decay: 0.05
+  num_workers: 0         # PLY ロードが重い場合は 2〜4 に増やす
+  eval_every: 5
+  save_every: 10

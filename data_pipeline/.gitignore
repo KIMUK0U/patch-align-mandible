@@ -1,0 +1,13 @@
+# API キー入りファイル (example からコピーして API キーを設定したもの)
+tools/generate_text_candidates.py
+
+# Python キャッシュ
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# 生成データ (大容量・再生成可能)
+renders/
+*.pt
+*.pth

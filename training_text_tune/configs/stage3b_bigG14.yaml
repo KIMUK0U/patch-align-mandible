@@ -1,0 +1,65 @@
+# Stage 3b: 局所パッチ BCE + KD + EWC 学習 設定 (ViT-bigG-14)
+# Stage 2 チェックポイントから直接 Stage 3b を開始する。
+# テキストエンコーダ: OpenCLIP ViT-bigG-14 (laion2b_s39b_b160k)
+#   → テキスト出力次元 1280
+
+seed: 42
+output_dir: "outputs/stage3b_bigG14"
+
+# ---------- データ ----------
+data:
+  ply_dir:  "../../../Dataset/6167726/STLs/STLs/normPLYs"
+  json_path: "../../data/DentalPatchData/dental_vocab/candidates.json"
+  npoints:   2048
+  val_ratio: 0.2
+  text_augment:  true
+  point_augment: true
+
+# ---------- CLIP ----------
+clip:
+  model:          "ViT-bigG-14"
+  pretrained:     "laion2b_s39b_b160k"
+  cache_capacity: 10000
+
+# ---------- モデル ----------
+model:
+  trans_dim:      384
+  depth:          12
+  drop_path_rate: 0.1
+  cls_dim:        50
+  num_heads:      6
+  group_size:     32
+  num_group:      128
+  encoder_dims:   256
+  color:          false
+  num_classes:    16
+  clip_dim:       1280    # ViT-bigG-14 テキスト出力次元
+  clip_tau:       0.07
+
+  stage2_ckpt: "../../checkpoints/patchalign3d/patchalign3d.pt"
+
+# ---------- 損失 ----------
+loss:
+  lambda_bce:          1.0
+  lambda_kd:           0.3
+  lambda_ewc:          1000.0
+  lambda_kd_text:      0.0
+  ewc_fisher_batches:  50
+
+# ---------- テキストエンコーダ ファインチューニング ----------
+# ViT-bigG-14 の最終 ResidualAttentionBlock + ln_final + text_projection を解凍する。
+text_tune:
+  enabled:       true
+  n_last_layers: 1        # 解凍する最終 ResidualAttentionBlock 数
+  lr:            1.0e-5   # point encoder の lr (3e-5) より小さく設定
+
+# ---------- 学習 ----------
+training:
+  epochs:        50
+  batch_size:    4
+  lr:            3.0e-5
+  weight_decay:  0.05
+  warmup_epochs: 5
+  num_workers:   0
+  eval_every:    5
+  save_every:    10

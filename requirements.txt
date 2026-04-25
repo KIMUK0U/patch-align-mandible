@@ -1,0 +1,41 @@
+# patch-align-mandible — Python dependencies
+#
+# Tested on Google Colab (Python 3.10/3.11, CUDA 11.8+).
+# torch / torchvision / numpy / Pillow are pre-installed on Colab;
+# remove the comments below if you are running in a clean environment.
+#
+# torch>=2.1.0
+# torchvision
+# numpy
+# Pillow
+
+# --- Core ---
+open_clip_torch>=2.24.0
+timm
+transformers
+easydict
+termcolor
+ninja
+PyYAML
+tqdm
+
+# --- 3D / Point cloud ---
+open3d
+
+# --- Data pipeline (LLM text generation) ---
+anthropic          # or: openai — whichever provider you use in generate_text_candidates.py
+
+# --- Apple Silicon deployment (apple_deploy/ only) ---
+# mlx              # pip install mlx
+# coremltools      # pip install coremltools
+
+# --- Manual installs required (wheel / git+) ---
+#
+# pointnet2_ops:
+#   pip install "git+https://github.com/erikwijmans/Pointnet2_PyTorch.git#egg=pointnet2_ops&subdirectory=pointnet2_ops_lib"
+#
+# KNN_CUDA:
+#   pip install https://github.com/unlimblue/KNN_CUDA/releases/download/0.2/KNN_CUDA-0.2-py3-none-any.whl
+#
+# PatchAlign3D reference encoder:
+#   pip install -e _reference_repos/PatchAlign3D

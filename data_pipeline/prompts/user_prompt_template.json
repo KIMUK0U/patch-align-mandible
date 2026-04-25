@@ -1,0 +1,25 @@
+{
+  "version": "3.1",
+  "notes": "position_descriptions now contain only spatial/directional info — no anatomical structure names. LPS octant is orientation only.",
+  "token_limits": {
+    "each_text_max_words": 20,
+    "each_text_max_chars": 120
+  },
+  "user_template": "The highlighted patch center is in the {lps_octant} region ({position_description}).\n{symmetry_note}\n\nUse the reference diagram and rendered views to identify the structure, then generate 5 descriptions in JSON format.",
+  "position_descriptions": {
+    "L-A-S": "left anterior superior quadrant",
+    "L-A-I": "left anterior inferior quadrant",
+    "L-P-S": "left posterior superior quadrant",
+    "L-P-I": "left posterior inferior quadrant",
+    "R-A-S": "right anterior superior quadrant",
+    "R-A-I": "right anterior inferior quadrant",
+    "R-P-S": "right posterior superior quadrant",
+    "R-P-I": "right posterior inferior quadrant",
+    "M-A-S": "midline anterior superior",
+    "M-A-I": "midline anterior inferior",
+    "M-P-S": "midline posterior superior",
+    "M-P-I": "midline posterior inferior"
+  },
+  "symmetry_note_template": "Laterality: {lr_side} side.",
+  "midline_symmetry_note": "Laterality: MIDLINE — do NOT use 'left' or 'right'. Use 'midline', 'central', or 'symphyseal'."
+}
