@@ -32,15 +32,13 @@ public final class CLIPTokenizer: @unchecked Sendable {
     // MARK: - Init
 
     public init() {
-        let bundle = Bundle.module
-
-        guard let vocabURL  = bundle.url(forResource: "clip_vocab",  withExtension: "json"),
+        guard let vocabURL = ResourceLocator.url(forResource: "clip_vocab", withExtension: "json"),
               let vocabData = try? Data(contentsOf: vocabURL),
               let rawVocab  = try? JSONSerialization.jsonObject(with: vocabData) as? [String: Int]
         else { fatalError("clip_vocab.json not found in bundle") }
         self.vocab = rawVocab.mapValues { Int32($0) }
 
-        guard let mergesURL  = bundle.url(forResource: "clip_merges", withExtension: "txt"),
+        guard let mergesURL = ResourceLocator.url(forResource: "clip_merges", withExtension: "txt"),
               let mergesText = try? String(contentsOf: mergesURL, encoding: .utf8)
         else { fatalError("clip_merges.txt not found in bundle") }
 

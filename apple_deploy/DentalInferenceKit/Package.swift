@@ -16,8 +16,9 @@ let package = Package(
             name: "DentalInferenceKit",
             path: "Sources/DentalInferenceKit",
             resources: [
-                // Place dental_patch_encoder.mlpackage and text_embeddings.bin here.
-                .process("Resources"),
+                // Copy the resource directory as-is so multiple CoreML
+                // .mlpackage directories can coexist under SwiftPM CLI builds.
+                .copy("Resources"),
             ]
         ),
     ]

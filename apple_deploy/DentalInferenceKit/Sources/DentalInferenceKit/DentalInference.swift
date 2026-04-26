@@ -32,6 +32,13 @@ public struct PatchEmbeddingOutput: Sendable {
     public let embeddingDim: Int
 }
 
+public struct TextBankMatch: Sendable {
+    public let rank: Int
+    public let textIndex: Int
+    public let label: String
+    public let score: Float
+}
+
 // MARK: - Main class
 
 public final class DentalInference: @unchecked Sendable {
@@ -50,20 +57,21 @@ public final class DentalInference: @unchecked Sendable {
     // MARK: - Init
 
     private init() {
-        let bundle = Bundle.module
-
-        guard let modelURL = bundle.url(
-            forResource: "dental_patch_encoder", withExtension: "mlmodelc"
-        ) else { fatalError("dental_patch_encoder.mlmodelc not found in bundle") }
+        let modelURL: URL
+        do {
+            modelURL = try ResourceLocator.coreMLModelURL(named: "dental_patch_encoder")
+        } catch {
+            fatalError(error.localizedDescription)
+        }
 
         let cfg = MLModelConfiguration()
         cfg.computeUnits = .all   // Neural Engine + GPU where available
         guard let m = try? MLModel(contentsOf: modelURL, configuration: cfg) else {
-            fatalError("Failed to load dental_patch_encoder.mlmodelc")
+            fatalError("Failed to load dental_patch_encoder CoreML model")
         }
         self.model = m
 
-        if let embURL = bundle.url(forResource: "text_embeddings", withExtension: "bin") {
+        if let embURL = ResourceLocator.url(forResource: "text_embeddings", withExtension: "bin") {
             (self.textEmb, self.labels) = Self.loadTextEmbeddings(url: embURL)
         } else {
             self.textEmb = nil
@@ -164,6 +172,55 @@ public final class DentalInference: @unchecked Sendable {
         )
     }
 
+    /// Rank text-bank labels by cosine similarity to one patch embedding.
+    ///
+    /// - Parameter embedding: One L2-normalised patch embedding, length `clipDim`.
+    /// - Parameter topK: Number of text candidates to return.
+    public func describePatchEmbedding(
+        _ embedding: [Float],
+        topK: Int = 5
+    ) throws -> [TextBankMatch] {
+        guard let textEmb, let labels else { throw InferenceError.textEmbeddingsNotLoaded }
+        guard embedding.count == clipDim else {
+            throw InferenceError.invalidEmbeddingDimension(
+                expected: clipDim,
+                actual: embedding.count
+            )
+        }
+
+        let K = labels.count
+        var scores = [Float](repeating: 0, count: K)
+
+        // scores = textEmb (K x D) @ embedding (D)
+        embedding.withUnsafeBufferPointer { embBuf in
+            textEmb.withUnsafeBufferPointer { textBuf in
+                cblas_sgemv(
+                    CblasRowMajor, CblasNoTrans,
+                    Int32(K), Int32(clipDim),
+                    1.0,
+                    textBuf.baseAddress!, Int32(clipDim),
+                    embBuf.baseAddress!, 1,
+                    0.0,
+                    &scores, 1
+                )
+            }
+        }
+
+        return Self.topKIndices(scores, k: topK).enumerated().map { rank, i in
+            TextBankMatch(
+                rank: rank + 1,
+                textIndex: i,
+                label: labels[i],
+                score: scores[i]
+            )
+        }
+    }
+
+    /// Number of labels loaded from `text_embeddings.bin`.
+    public var textBankCount: Int {
+        labels?.count ?? 0
+    }
+
     // MARK: - Private
 
     private func runModel(
@@ -236,8 +293,16 @@ public final class DentalInference: @unchecked Sendable {
         return (emb, labels)
     }
 
+    private static func topKIndices(_ scores: [Float], k: Int) -> [Int] {
+        scores.indices
+            .sorted { scores[$0] > scores[$1] }
+            .prefix(min(max(k, 0), scores.count))
+            .map { $0 }
+    }
+
     public enum InferenceError: Error {
         case missingOutput
         case textEmbeddingsNotLoaded
+        case invalidEmbeddingDimension(expected: Int, actual: Int)
     }
 }

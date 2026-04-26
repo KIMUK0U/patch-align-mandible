@@ -25,15 +25,17 @@ public final class CLIPTextEncoder: @unchecked Sendable {
     // MARK: - Init
 
     private init() {
-        let bundle = Bundle.module
-        guard let modelURL = bundle.url(
-            forResource: "dental_clip_text", withExtension: "mlmodelc"
-        ) else { fatalError("dental_clip_text.mlmodelc not found in bundle") }
+        let modelURL: URL
+        do {
+            modelURL = try ResourceLocator.coreMLModelURL(named: "dental_clip_text")
+        } catch {
+            fatalError(error.localizedDescription)
+        }
 
         let cfg = MLModelConfiguration()
         cfg.computeUnits = .all
         guard let m = try? MLModel(contentsOf: modelURL, configuration: cfg) else {
-            fatalError("Failed to load dental_clip_text.mlpackage")
+            fatalError("Failed to load dental_clip_text CoreML model")
         }
         self.model     = m
         self.tokenizer = CLIPTokenizer()

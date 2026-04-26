@@ -127,10 +127,7 @@ public final class PatchSearchEngine: @unchecked Sendable {
         G: Int,
         M: Int
     ) throws -> [Float] {
-        let bundle = Bundle.module
-        guard let modelURL = bundle.url(
-            forResource: "dental_patch_encoder", withExtension: "mlpackage"
-        ) else { fatalError("dental_patch_encoder.mlpackage not found in bundle") }
+        let modelURL = try ResourceLocator.coreMLModelURL(named: "dental_patch_encoder")
 
         let cfg = MLModelConfiguration()
         cfg.computeUnits = .all
