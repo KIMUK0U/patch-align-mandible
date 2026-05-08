@@ -15,11 +15,6 @@ let package = Package(
         .target(
             name: "DentalInferenceKit",
             path: "Sources/DentalInferenceKit",
-            resources: [
-                // Copy the resource directory as-is so multiple CoreML
-                // .mlpackage directories can coexist under SwiftPM CLI builds.
-                .copy("Resources"),
-            ]
         ),
     ]
 )

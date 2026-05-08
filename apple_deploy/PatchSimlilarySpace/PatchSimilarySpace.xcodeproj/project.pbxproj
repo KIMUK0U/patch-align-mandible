@@ -22,33 +22,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C102CBF42F9BB4F5006690E5 /* PatchSimlilarySpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PatchSimlilarySpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C102CBF42F9BB4F5006690E5 /* PatchSimilarySpace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PatchSimilarySpace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C102CBF82F9BB4F5006690E5 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
-		C102CC082F9BB4F6006690E5 /* PatchSimlilarySpaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PatchSimlilarySpaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C102CC082F9BB4F6006690E5 /* PatchSimilarySpaceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PatchSimilarySpaceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		C102CC0E2F9BB4F6006690E5 /* Exceptions for "PatchSimlilarySpace" folder in "PatchSimlilarySpace" target */ = {
+		C102CC0E2F9BB4F6006690E5 /* Exceptions for "PatchSimilarySpace" folder in "PatchSimilarySpace" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = C102CBF32F9BB4F5006690E5 /* PatchSimlilarySpace */;
+			target = C102CBF32F9BB4F5006690E5 /* PatchSimilarySpace */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C102CBF62F9BB4F5006690E5 /* PatchSimlilarySpace */ = {
+		C102CBF62F9BB4F5006690E5 /* PatchSimilarySpace */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				C102CC0E2F9BB4F6006690E5 /* Exceptions for "PatchSimlilarySpace" folder in "PatchSimlilarySpace" target */,
+				C102CC0E2F9BB4F6006690E5 /* Exceptions for "PatchSimilarySpace" folder in "PatchSimilarySpace" target */,
 			);
-			path = PatchSimlilarySpace;
+			path = PatchSimilarySpace;
 			sourceTree = "<group>";
 		};
-		C102CC0B2F9BB4F6006690E5 /* PatchSimlilarySpaceTests */ = {
+		C102CC0B2F9BB4F6006690E5 /* PatchSimilarySpaceTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PatchSimlilarySpaceTests;
+			path = PatchSimilarySpaceTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -76,9 +76,9 @@
 		C102CBEB2F9BB4F5006690E5 = {
 			isa = PBXGroup;
 			children = (
-				C102CBF62F9BB4F5006690E5 /* PatchSimlilarySpace */,
+				C102CBF62F9BB4F5006690E5 /* PatchSimilarySpace */,
 				C102CBF72F9BB4F5006690E5 /* Packages */,
-				C102CC0B2F9BB4F6006690E5 /* PatchSimlilarySpaceTests */,
+				C102CC0B2F9BB4F6006690E5 /* PatchSimilarySpaceTests */,
 				C102CBF52F9BB4F5006690E5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,8 +86,8 @@
 		C102CBF52F9BB4F5006690E5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C102CBF42F9BB4F5006690E5 /* PatchSimlilarySpace.app */,
-				C102CC082F9BB4F6006690E5 /* PatchSimlilarySpaceTests.xctest */,
+				C102CBF42F9BB4F5006690E5 /* PatchSimilarySpace.app */,
+				C102CC082F9BB4F6006690E5 /* PatchSimilarySpaceTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,9 +103,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C102CBF32F9BB4F5006690E5 /* PatchSimlilarySpace */ = {
+		C102CBF32F9BB4F5006690E5 /* PatchSimilarySpace */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C102CC0F2F9BB4F6006690E5 /* Build configuration list for PBXNativeTarget "PatchSimlilarySpace" */;
+			buildConfigurationList = C102CC0F2F9BB4F6006690E5 /* Build configuration list for PBXNativeTarget "PatchSimilarySpace" */;
 			buildPhases = (
 				C102CBF02F9BB4F5006690E5 /* Sources */,
 				C102CBF12F9BB4F5006690E5 /* Frameworks */,
@@ -116,20 +116,20 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				C102CBF62F9BB4F5006690E5 /* PatchSimlilarySpace */,
+				C102CBF62F9BB4F5006690E5 /* PatchSimilarySpace */,
 			);
-			name = PatchSimlilarySpace;
+			name = PatchSimilarySpace;
 			packageProductDependencies = (
 				D10000032F9C000000000003 /* DentalInferenceKit */,
 				C102CBF92F9BB4F5006690E5 /* RealityKitContent */,
 			);
 			productName = PatchSimlilarySpace;
-			productReference = C102CBF42F9BB4F5006690E5 /* PatchSimlilarySpace.app */;
+			productReference = C102CBF42F9BB4F5006690E5 /* PatchSimilarySpace.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C102CC072F9BB4F6006690E5 /* PatchSimlilarySpaceTests */ = {
+		C102CC072F9BB4F6006690E5 /* PatchSimilarySpaceTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C102CC142F9BB4F6006690E5 /* Build configuration list for PBXNativeTarget "PatchSimlilarySpaceTests" */;
+			buildConfigurationList = C102CC142F9BB4F6006690E5 /* Build configuration list for PBXNativeTarget "PatchSimilarySpaceTests" */;
 			buildPhases = (
 				C102CC042F9BB4F6006690E5 /* Sources */,
 				C102CC052F9BB4F6006690E5 /* Frameworks */,
@@ -141,13 +141,13 @@
 				C102CC0A2F9BB4F6006690E5 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				C102CC0B2F9BB4F6006690E5 /* PatchSimlilarySpaceTests */,
+				C102CC0B2F9BB4F6006690E5 /* PatchSimilarySpaceTests */,
 			);
-			name = PatchSimlilarySpaceTests;
+			name = PatchSimilarySpaceTests;
 			packageProductDependencies = (
 			);
 			productName = PatchSimlilarySpaceTests;
-			productReference = C102CC082F9BB4F6006690E5 /* PatchSimlilarySpaceTests.xctest */;
+			productReference = C102CC082F9BB4F6006690E5 /* PatchSimilarySpaceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -169,7 +169,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C102CBEF2F9BB4F5006690E5 /* Build configuration list for PBXProject "PatchSimlilarySpace" */;
+			buildConfigurationList = C102CBEF2F9BB4F5006690E5 /* Build configuration list for PBXProject "PatchSimilarySpace" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -186,8 +186,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C102CBF32F9BB4F5006690E5 /* PatchSimlilarySpace */,
-				C102CC072F9BB4F6006690E5 /* PatchSimlilarySpaceTests */,
+				C102CBF32F9BB4F5006690E5 /* PatchSimilarySpace */,
+				C102CC072F9BB4F6006690E5 /* PatchSimilarySpaceTests */,
 			);
 		};
 /* End PBXProject section */
@@ -229,7 +229,7 @@
 /* Begin PBXTargetDependency section */
 		C102CC0A2F9BB4F6006690E5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C102CBF32F9BB4F5006690E5 /* PatchSimlilarySpace */;
+			target = C102CBF32F9BB4F5006690E5 /* PatchSimilarySpace */;
 			targetProxy = C102CC092F9BB4F6006690E5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -434,7 +434,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 7;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PatchSimlilarySpace.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PatchSimlilarySpace";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PatchSimilarySpace.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PatchSimilarySpace";
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Debug;
@@ -457,7 +457,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 7;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PatchSimlilarySpace.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PatchSimlilarySpace";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PatchSimilarySpace.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PatchSimilarySpace";
 				XROS_DEPLOYMENT_TARGET = 26.2;
 			};
 			name = Release;
@@ -465,7 +465,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C102CBEF2F9BB4F5006690E5 /* Build configuration list for PBXProject "PatchSimlilarySpace" */ = {
+		C102CBEF2F9BB4F5006690E5 /* Build configuration list for PBXProject "PatchSimilarySpace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C102CC122F9BB4F6006690E5 /* Debug */,
@@ -474,7 +474,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C102CC0F2F9BB4F6006690E5 /* Build configuration list for PBXNativeTarget "PatchSimlilarySpace" */ = {
+		C102CC0F2F9BB4F6006690E5 /* Build configuration list for PBXNativeTarget "PatchSimilarySpace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C102CC102F9BB4F6006690E5 /* Debug */,
@@ -483,7 +483,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C102CC142F9BB4F6006690E5 /* Build configuration list for PBXNativeTarget "PatchSimlilarySpaceTests" */ = {
+		C102CC142F9BB4F6006690E5 /* Build configuration list for PBXNativeTarget "PatchSimilarySpaceTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C102CC152F9BB4F6006690E5 /* Debug */,

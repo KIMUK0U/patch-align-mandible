@@ -2,35 +2,35 @@ import CoreML
 import Foundation
 
 enum ResourceLocator {
+    private static let resourceSubdirectory = "DentalInferenceResources"
+
     static func url(forResource name: String, withExtension ext: String) -> URL? {
-        let bundle = Bundle.module
-        if let direct = bundle.url(forResource: name, withExtension: ext) {
+        // アプリBundle直下
+        if let direct = Bundle.main.url(forResource: name, withExtension: ext) {
             return direct
         }
-        if let nested = bundle.url(
+
+        // アプリBundle/DentalInferenceResources/
+        if let nested = Bundle.main.url(
             forResource: name,
             withExtension: ext,
-            subdirectory: "Resources"
+            subdirectory: resourceSubdirectory
         ) {
             return nested
         }
 
-        guard let candidate = bundle.resourceURL?
-            .appendingPathComponent("Resources", isDirectory: true)
-            .appendingPathComponent("\(name).\(ext)")
-        else {
-            return nil
-        }
-        return FileManager.default.fileExists(atPath: candidate.path) ? candidate : nil
+        return nil
     }
 
     static func coreMLModelURL(named name: String) throws -> URL {
         if let compiledURL = url(forResource: name, withExtension: "mlmodelc") {
             return compiledURL
         }
+
         if let packageURL = url(forResource: name, withExtension: "mlpackage") {
             return try MLModel.compileModel(at: packageURL)
         }
+
         throw ResourceError.missingCoreMLModel(name)
     }
 
@@ -40,7 +40,7 @@ enum ResourceLocator {
         var errorDescription: String? {
             switch self {
             case .missingCoreMLModel(let name):
-                return "\(name).mlmodelc or \(name).mlpackage not found in bundle"
+                return "\(name).mlmodelc or \(name).mlpackage not found in app bundle"
             }
         }
     }
