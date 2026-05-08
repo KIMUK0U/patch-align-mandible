@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D10000012F9C000000000001 /* DentalInferenceKit in Frameworks */ = {isa = PBXBuildFile; productRef = D10000032F9C000000000003 /* DentalInferenceKit */; };
 		C102CBFA2F9BB4F5006690E5 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = C102CBF92F9BB4F5006690E5 /* RealityKitContent */; };
+		D10000012F9C000000000001 /* DentalInferenceKit in Frameworks */ = {isa = PBXBuildFile; productRef = D10000032F9C000000000003 /* DentalInferenceKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,7 +158,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
-				LastUpgradeCheck = 2620;
+				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					C102CBF32F9BB4F5006690E5 = {
 						CreatedOnToolsVersion = 26.2;
@@ -179,7 +179,7 @@
 			mainGroup = C102CBEB2F9BB4F5006690E5;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				D10000022F9C000000000002 /* XCLocalSwiftPackageReference "../Phase3_MLX/DentalInferenceKit" */,
+				D10000022F9C000000000002 /* XCLocalSwiftPackageReference "../DentalInferenceKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C102CBF52F9BB4F5006690E5 /* Products */;
@@ -251,7 +251,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = name.kimurakota.PatchSimlilarySpace;
+				PRODUCT_BUNDLE_IDENTIFIER = name.kimurakota.PatchSimilarySpace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "xros xrsimulator";
@@ -351,6 +351,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = xros;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				XROS_DEPLOYMENT_TARGET = 26.2;
@@ -408,6 +409,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = xros;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 				XROS_DEPLOYMENT_TARGET = 26.2;
@@ -492,24 +494,24 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCSwiftPackageProductDependency section */
-		D10000032F9C000000000003 /* DentalInferenceKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D10000022F9C000000000002 /* XCLocalSwiftPackageReference "../Phase3_MLX/DentalInferenceKit" */;
-			productName = DentalInferenceKit;
-		};
-		C102CBF92F9BB4F5006690E5 /* RealityKitContent */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = RealityKitContent;
-		};
-/* End XCSwiftPackageProductDependency section */
-
 /* Begin XCLocalSwiftPackageReference section */
 		D10000022F9C000000000002 /* XCLocalSwiftPackageReference "../DentalInferenceKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../DentalInferenceKit;
 		};
 /* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C102CBF92F9BB4F5006690E5 /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+		D10000032F9C000000000003 /* DentalInferenceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D10000022F9C000000000002 /* XCLocalSwiftPackageReference "../DentalInferenceKit" */;
+			productName = DentalInferenceKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C102CBEC2F9BB4F5006690E5 /* Project object */;
 }
